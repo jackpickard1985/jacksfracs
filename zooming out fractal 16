@@ -1,0 +1,58 @@
+import turtle
+tracer_speed = 00
+turtle.tracer(tracer_speed, 0)
+turtle.hideturtle()
+colour_counter = 0
+def koch_curve(t, iterations, length, shortening_factor, angle):
+    if iterations == 0:
+        t.forward(length)
+#        if colour_counter == 1:
+#            turtle.pencolor("red")
+#            colour_counter = 0
+#        else:
+#            turtle.pencolor("black")
+#            colour_counter = 1            
+    else:
+        iterations = iterations - 1
+        length = length / shortening_factor
+        koch_curve(t, iterations, length, shortening_factor, angle * 1.1)
+        t.left(angle * 1.1)
+        koch_curve(t, iterations, length, shortening_factor, angle)
+        t.right(angle * 1.19) # change this number for interest eg 2.7
+        koch_curve(t, iterations, length, shortening_factor, angle)
+        t.left(angle * 1.1)
+        koch_curve(t, iterations, length, shortening_factor, angle)
+t = turtle.Turtle()
+turtle.hideturtle()
+turtle.speed(10)
+turtle.delay(0)
+
+
+overall_size = 250
+range_setter = 3
+for z in range(900):
+    extra_angle = 1
+    t = turtle.Turtle()
+    turtle.hideturtle()
+    turtle.speed(10)
+    turtle.delay(0)
+    turtle.tracer(tracer_speed, 0)
+    overall_size = overall_size * 0.7   # sets rate of size change
+    range_setter = range_setter + 28
+    size_setter = 0.3
+    for i in range(range_setter):
+      size_setter = size_setter + 0.1
+      t.left(20 + extra_angle)
+      for i in range(1): # range dictates how long it carries on
+        koch_curve(t, 5, 50 * size_setter * overall_size, 3, 60) # second number = size
+        t.right(1) # don't know what this number does, started at 12, 1 is different
+        extra_angle = extra_angle * 1 + 2.8 / (extra_angle *0.9) # WAS disabled
+    turtle.Screen().clear()
+    turtle.reset()
+    turtle.hideturtle()
+    if tracer_speed < 100:
+        tracer_speed = tracer_speed + 10
+    
+
+turtle.mainloop()
+
