@@ -1,5 +1,5 @@
 # jacksfracs
-My fractals
+Koch-based fractal geometry for randomly initialted never-ending output with cycling colours
 
 This was built in python 2.7 and it needs the turtle mod to run which it should import
 
