@@ -36,7 +36,7 @@ turtle.delay(0)
 
 
 
-for q in range(11800000000000):
+for q in range(1180000):
     turtle.hideturtle()
     periodic = q
     overall_size = 250
